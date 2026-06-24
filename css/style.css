@@ -231,3 +231,10 @@ body {
 .btn-vs-player:active {
   background-color: var(--teal-300);
 }
+
+/* Game Board */
+
+
+.hidden {
+  display: none;
+}

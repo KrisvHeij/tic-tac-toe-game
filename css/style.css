@@ -138,6 +138,7 @@ body {
   border-radius: var(--radius-10);
   padding: var(--spacing-100);
   display: flex;
+  gap: 2px;
 }
 
 .sr-only {
@@ -156,11 +157,12 @@ body {
   width: 50%;
   height: 3.375rem;
   border-radius: var(--radius-10);
+  overflow: hidden;
   cursor: pointer;
 }
 
 .pick-mark-group:has(input:focus) {
-  outline: solid 2px white;           
+  outline: solid 2px var(--slate-300);           
 }
 
 .pick-mark-group label {
@@ -177,6 +179,10 @@ body {
 
 .pick-mark-group:has(input:checked) {
   background-color: var(--slate-300);
+}
+
+.pick-mark-group input:not(:checked) ~label:hover {
+  background-color: var(--slate-850);
 }
 
 .pick-mark-group:has(input:checked) label svg {

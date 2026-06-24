@@ -107,9 +107,13 @@ body {
   place-items: center;
 }
 
+/* Container for content */
+.container-main {
+  width: clamp(20.4375rem, calc(12.506rem + 33.842vw), 28.75rem);
+}
+
 /* Start Menu */
 .start-menu {
-  width: clamp(20.4375rem, calc(12.506rem + 33.842vw), 28.75rem);
   display: grid;
   gap: clamp(2rem, calc(1.523rem + 2.036vw), 2.5rem);
 }
@@ -233,7 +237,9 @@ body {
 }
 
 /* Game Board */
-
+.game-board-header {
+  display: flex;
+}
 
 .hidden {
   display: none;

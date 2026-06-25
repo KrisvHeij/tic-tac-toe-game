@@ -108,7 +108,7 @@ body {
 .container-main {
   height: 100vh;
   display: grid;
-  place-items: center;
+  /* place-items: center; */
 }
 
 .container-section {
@@ -118,6 +118,7 @@ body {
 /* Start Menu */
 .start-menu {
   display: grid;
+  place-self: center;
   gap: clamp(2rem, calc(1.523rem + 2.036vw), 2.5rem);
 }
 
@@ -240,9 +241,21 @@ body {
 }
 
 /* Game Board */
-
+/* Game board header */
+.game-board {
+  justify-self: center;
+  padding-block-start: var(--spacing-300);
+}
 .game-board-header {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+  margin-block-end: 3rem;
+}
+
+.turn-display {
+  background-color: var(--slate-800);
+  color: var(--slate-300);
 }
 
 .hidden {

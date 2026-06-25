@@ -256,6 +256,7 @@ body {
 .turn-display {
   background-color: var(--slate-800);
   color: var(--slate-300);
+  border-radius: var(--rad)
 }
 
 .hidden {

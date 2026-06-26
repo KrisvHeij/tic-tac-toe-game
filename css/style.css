@@ -253,9 +253,49 @@ body {
   margin-block-end: 3rem;
 }
 
+.game-board-header div {
+  display: grid;
+  align-items: center;
+}
+
 .turn-display {
+  width: clamp(6rem, calc(3.376rem + 11.196vw), 8.75rem);
+  height: clamp(2.5rem, calc(1.784rem + 3.053vw), 3.25rem);
   background-color: var(--slate-800);
   color: var(--slate-300);
+  border-radius: var(--radius-6);
+  box-shadow: inset 0 -4px 0 #10212A;
+  justify-content: center;
+}
+
+.turn-display h2 {
+  font-size: clamp(0.88rem, calc(0.756rem + 0.509vw), 1.00rem);
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, calc(0.261rem + 1.018vw), 0.75rem);
+  text-transform: uppercase;
+}
+
+.turn-display span {
+  height: clamp(1rem, calc(0.761rem + 1.018vw), 1.25rem);
+}
+
+.turn-display svg {
+  width: clamp(1rem, calc(0.761rem + 1.018vw), 1.25rem);
+  height: auto;
+}
+
+.btn-restart {
+  width: clamp(2.5rem, calc(1.784rem + 3.053vw), 3.25rem);
+  height: clamp(2.5rem, calc(1.784rem + 3.053vw), 3.25rem);
+  background-color: var(--slate-300);
+  background-image: url("../assets/icon-restart.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: clamp(1rem, calc(0.639rem + 1.272vw), 1.25rem);
+  border-radius: var(--radius-6);
+  box-shadow: inset 0 -4px 0 #6B8997;
+  border: 0;
 }
 
 .hidden {

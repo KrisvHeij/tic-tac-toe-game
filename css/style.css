@@ -369,6 +369,50 @@ body {
   transform: none;
 }
 
+/* Game board scores */
+.game-board-scores {
+  display: flex;
+  gap: var(--spacing-250);
+  margin-block-start: var(--spacing-250);
+}
+
+.score {
+  height: clamp(4rem, calc(3.523rem + 2.036vw), 4.5rem);
+  flex-grow: 1;
+  flex-basis: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-radius: clamp(0.625rem, calc(0.267rem + 1.527vw), 1rem);;
+}
+
+.score-head {
+  font-size: clamp(0.75rem, calc(0.631rem + 0.509vw), 0.88rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+}
+
+.score-count {
+  font-size: clamp(1.25rem, calc(1.011rem + 1.018vw), 1.50rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 1.25px;
+}
+
+.score-player-1 {
+  background-color: var(--teal-400);
+}
+
+.score-ties {
+  background-color: var(--slate-300);
+}
+
+.score-player-2 {
+  background-color: var(--amber-400);
+}
+
 /* Global styles */
 .hidden {
   display: none;

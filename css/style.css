@@ -85,7 +85,7 @@
   letter-spacing: 0.75px;
 }
 
-/* Global styles */
+/* General styles */
 *,
 *::after,
 *::before {
@@ -335,14 +335,42 @@ body {
   border-radius: var(--radius-10);
   box-shadow: 0 8px 0 #10212A;
   cursor: pointer;
-  background-image: url(../assets/icon-x.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: clamp(2.5rem, calc(1.069rem + 6.107vw), 4rem);;
+  background-size: clamp(2.5rem, calc(1.069rem + 6.107vw), 4rem);
 }
 
+.tile:active {
+  transform: scale(0.95);
+  box-shadow: 0 6px 0 #10212A;
+}
 
+/* States for tiles when marked/played */
+/* .turn-x .turn-o */
 
+.turn-x .tile:not(.tile-x):not(.tile-o):hover,
+.turn-x .tile:not(.tile-x):not(.tile-o):focus {
+  background-image: url(../assets/icon-x-outline.svg);
+}
+
+.turn-o .tile:not(.tile-x):not(.tile-o):hover,
+.turn-o .tile:not(.tile-x):not(.tile-o):focus {
+  background-image: url(../assets/icon-o-outline.svg);
+}
+
+.tile-x {
+  background-image: url(../assets/icon-x.svg);
+}
+
+.tile-o {
+  background-image: url(../assets/icon-o.svg);
+}
+
+.tile-x.tile--winner-x {
+  background-color: var(--teal-400);
+}
+
+/* Global styles */
 .hidden {
   display: none;
 }

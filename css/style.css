@@ -252,14 +252,17 @@ body {
 /* Game Board */
 /* Game board header */
 .game-board {
+  max-height: 39rem;
   justify-self: center;
-  padding-block-start: var(--spacing-300);
+  padding-block-start: clamp(0rem, calc(2.931rem - 6.107vw), 1.5rem);
 }
+
 .game-board-header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-block-end: 3rem;
+  /* margin-block-end: 3rem; */
+  margin-block-end: clamp(1.25rem, calc(4.67rem - 7.125vw), 3rem);
 }
 
 .game-board-header div {
@@ -322,6 +325,7 @@ body {
 
 /* Game Board Tiles */
 .game-board-tiles {
+  height: clamp(20.5rem, calc(12.628rem + 33.588vw), 28.75rem);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -329,7 +333,9 @@ body {
 }
 
 .tile {
-  height: clamp(6rem, calc(3.376rem + 11.196vw), 8.75rem);
+  /* height: clamp(6rem, calc(3.376rem + 11.196vw), 8.75rem); */
+  /* width: 100%; */
+  height: 100%;
   /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -418,3 +424,9 @@ body {
   display: none;
 }
 
+/* Media queries */
+@media (min-width: 32rem) {
+  .game-board {
+    align-self: center;
+  }
+}

@@ -104,6 +104,11 @@ body {
   background-color: var(--slate-900);
 }
 
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
 /* Container for content */
 .container-main {
   height: 100vh;
@@ -210,7 +215,6 @@ body {
   line-height: 1.25;
   text-transform: uppercase;
   letter-spacing: clamp(0.06rem, calc(0.048rem + 0.064vw), 0.08rem);
-  cursor: pointer;
   transition: background-color 150ms ease;
 }
 
@@ -310,7 +314,6 @@ body {
   border-radius: var(--radius-6);
   box-shadow: inset 0 -4px 0 hsl(199, 17%, 51%);
   border: 0;
-  cursor: pointer;
   transition: background-color 150ms ease;
 }
 
@@ -417,6 +420,70 @@ body {
 
 .score-player-2 {
   background-color: var(--amber-400);
+}
+
+/* Restart dialog */
+.restart-dialog {
+  min-width: 100%;
+  height: clamp(14.25rem, calc(11.984rem + 9.669vw), 16.625rem);
+  place-self: center;
+  text-align: center;
+  background-color: var(--slate-800);
+  border: 0;
+}
+
+.restart-dialog::backdrop {
+  background-color: hsl(0, 0%, 0%, 50%);
+}
+
+.restart-dialog-inner {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.restart-dialog-inner h3 {
+  margin-block-end: clamp(1.5rem, calc(1.142rem + 1.527vw), 1.875rem);
+  color: var(--slate-300);
+  font-size: clamp(1.50rem, calc(0.546rem + 4.071vw), 2.50rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: clamp(0.09rem, calc(0.034rem + 0.254vw), 0.16rem);
+  text-transform: uppercase;
+}
+
+.btn-dialog {
+  padding: var(--spacing-200);
+  color: var(--slate-900);
+  text-transform: uppercase;
+  border: 0;
+  border-radius: var(--radius-16);
+}
+
+.btn-dialog:active {
+  transform: scale(0.95);
+}
+
+.restart-dialog .btn-dialog:first-of-type {
+  margin-inline-end: var(--spacing-200);
+}
+
+.btn-dialog-cancel {
+  background-color: var(--slate-300);
+  box-shadow: inset 0 -4px 0 #6B8997;
+}
+
+.btn-dialog-cancel:hover {
+  background-color: var(--slate-100);
+}
+
+.btn-dialog-restart {
+  background-color: var(--amber-400);
+  box-shadow: inset 0 -4px 0 #CC8B13;
+}
+
+.btn-dialog-restart:hover {
+  background-color: var(--amber-300);
 }
 
 /* Global styles */

@@ -26,6 +26,4 @@ export function getSelectedMark() {
       state.playerOne.mark = radio.value;
     }
   }
-
-
 }

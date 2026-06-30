@@ -2,7 +2,7 @@ import {state, getSelectedMark} from "./state.js";
 
 
 
-const startBtn = document.querySelectorAll(".btn-newgame");
+const startBtnContainer = document.querySelector(".button-container");
 
 
 function startGame() {
@@ -10,7 +10,11 @@ function startGame() {
   console.log(mark);
 }
 
-
-// Event listeners
 startGame();
 console.log(state)
+
+// Event listeners
+startBtnContainer.addEventListener("click", (e) => {
+  console.log(e.target)
+  // startGame(e);
+})

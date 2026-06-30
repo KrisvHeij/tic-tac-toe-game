@@ -422,8 +422,8 @@ button {
   background-color: var(--amber-400);
 }
 
-/* Restart dialog */
-.restart-dialog {
+/* General dialog styles */
+.dialog {
   min-width: 100%;
   height: clamp(14.25rem, calc(11.984rem + 9.669vw), 16.625rem);
   place-self: center;
@@ -432,24 +432,14 @@ button {
   border: 0;
 }
 
-.restart-dialog::backdrop {
+.dialog::backdrop {
   background-color: hsl(0, 0%, 0%, 50%);
 }
 
-.restart-dialog-inner {
+.dialog-inner {
   height: 100%;
   display: grid;
   place-items: center;
-}
-
-.restart-dialog-inner h3 {
-  margin-block-end: clamp(1.5rem, calc(1.142rem + 1.527vw), 1.875rem);
-  color: var(--slate-300);
-  font-size: clamp(1.50rem, calc(0.546rem + 4.071vw), 2.50rem);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: clamp(0.09rem, calc(0.034rem + 0.254vw), 0.16rem);
-  text-transform: uppercase;
 }
 
 .btn-dialog {
@@ -465,8 +455,19 @@ button {
   transform: scale(0.95);
 }
 
-.restart-dialog .btn-dialog:first-of-type {
+.dialog .btn-dialog:first-of-type {
   margin-inline-end: var(--spacing-200);
+}
+
+/* Restart dialog */
+.restart-dialog h3 {
+  margin-block-end: clamp(1.5rem, calc(1.142rem + 1.527vw), 1.875rem);
+  color: var(--slate-300);
+  font-size: clamp(1.50rem, calc(0.546rem + 4.071vw), 2.50rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: clamp(0.09rem, calc(0.034rem + 0.254vw), 0.16rem);
+  text-transform: uppercase;
 }
 
 .btn-dialog-cancel {
@@ -494,6 +495,60 @@ button {
 .btn-dialog-restart:active {
   box-shadow: inset 0 -3px 0 #CC8B13;
 }
+
+/* States for which text/color to show */
+/* .winner-x .winner-o .tied */
+
+/* Next round dialog */
+.next-round-dialog h3 {
+  margin-block-end: var(--spacing-200);
+  color: var(--slate-300);
+  font-size: clamp(0.88rem, calc(0.756rem + 0.509vw), 1.00rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.next-round-dialog svg {
+  width: clamp(1.688rem, calc(-0.519rem + 9.415vw), 4rem);
+  height: auto;
+  margin-inline-end: var(--spacing-300);
+}
+
+.next-round-dialog p,
+.round-tied h3 {
+  margin-block-end: var(--spacing-300);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1.50rem, calc(0.546rem + 4.071vw), 2.50rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: clamp(0.094rem, calc(0.034rem + 0.254vw), 0.156rem);
+  text-transform: uppercase;
+}
+
+/* Styles for winners */
+/* Winner X */
+.next-round-dialog.--winner-x svg {
+  fill: var(--teal-400);
+}
+.next-round-dialog.--winner-x p {
+  color: var(--teal-400);
+}
+/* Winner O */
+.next-round-dialog.--winner-o svg {
+  fill: var(--amber-400);
+}
+.next-round-dialog.--winner-o p {
+  color: var(--amber-400);
+}
+/* Tied */
+.next-round-dialog.--tied p {
+  color: var(--slate-300);
+}
+
 
 /* Global styles */
 .hidden {

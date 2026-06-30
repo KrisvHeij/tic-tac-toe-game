@@ -109,6 +109,17 @@ button {
   cursor: pointer;
 }
 
+/* Class to hide content except for sreen readers */
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
 /* Container for content */
 .container-main {
   height: 100vh;
@@ -152,16 +163,6 @@ button {
   padding: var(--spacing-100);
   display: flex;
   gap: 2px;
-}
-
-.sr-only {
-  clip: rect(0 0 0 0);
-  clip-path: inset(100%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
 }
 
 .pick-mark-group {
@@ -364,8 +365,8 @@ button {
   height: auto;
 }
 
-.tile:hover:not(.tile-x) .tile-hover,
-.tile:hover:not(.tile-o) .tile-hover {
+.turn-x .tile:hover:not(.tile-x) .tile-hover,
+.turn-o .tile:hover:not(.tile-o) .tile-hover {
   display: inline;
 }
 

@@ -1,19 +1,30 @@
-import {state, getSelectedMark} from "./state.js";
-
-
+import {state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn} from "./state.js";
 
 const startBtnContainer = document.querySelector(".button-container");
-
+const cpuBtn = document.querySelector(".btn-vs-cpu");
 
 function startGame(target) {
-  getSelectedMark();
+  const radioInputs = document.querySelectorAll(".pick-mark-container input[type=radio]");
 
-  console.log(target)
+  for (const radio of radioInputs) {
+    if (radio.checked) {
+      setSelectedMark(radio.value);
+    }
+  }
+  
+  setPlayerTwoMark();
+  setPlayers(target);
+  
   console.log(state);
 }
 
-
 // Event listeners
+// cpuBtn.addEventListener("click", startGame);
+
 startBtnContainer.addEventListener("click", (e) => {
-  startGame(e.target);
-})
+  if (!e.target.classList.contains("btn-newgame")) {
+    return;
+  } else {
+    startGame(e.target);
+  }
+});

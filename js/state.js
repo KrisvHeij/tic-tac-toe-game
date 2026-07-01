@@ -11,19 +11,31 @@ export function createInitialState() {
       mark: null,
       name: null
     },
-    playerTurn: true,
-    scorePlayerOne: 0,
-    scorePlayerTwo: 0,
+    playerTurn: "x",
+    scoreX: 0,
+    scoreO: 0,
     ties: 0
   }
 }
 
-export function getSelectedMark() {
-  const radioInputs = document.querySelectorAll(".pick-mark-container input[type=radio]");
+export function setSelectedMark(mark) {
+  state.playerOne.mark = mark;
+}
 
-  for (const radio of radioInputs) {
-    if (radio.checked) {
-      state.playerOne.mark = radio.value;
-    }
+export function setPlayerTwoMark() {
+  state.playerTwo.mark = state.playerOne.mark === "x" ? "o" : "x";
+}
+
+export function setPlayers(target) {
+  if (target.id === "cpu") {
+    state.playerOne.name = "you"
+    state.playerTwo.name = "cpu";
+  } else {
+    state.playerOne.name = "p1";
+    state.playerTwo.name = "p2";
   }
+}
+
+export function setPlayerTurn() {
+  state.playerTurn = state.playerTurn === "x" ? "o" : "x";
 }

@@ -17,5 +17,4 @@ export function showHideGameBoard() {
   const gameBoard = document.getElementById("gameBoard");
 
   gameBoard.classList.toggle("hidden");
-  
 }

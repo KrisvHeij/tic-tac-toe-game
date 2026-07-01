@@ -31,3 +31,5 @@ startBtnContainer.addEventListener("click", (e) => {
     startGame(e.target);
   }
 });
+
+console.log(state);

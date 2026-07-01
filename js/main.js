@@ -1,5 +1,5 @@
 import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn } from "./state.js";
-import { showHideGameBoard, showHideStartMenu } from "./render.js";
+import { showHideGameBoard, showHideStartMenu, renderGameBoard } from "./render.js";
 
 const startBtnContainer = document.querySelector(".button-container");
 const cpuBtn = document.querySelector(".btn-vs-cpu");
@@ -19,6 +19,7 @@ function startGame(target) {
   showHideStartMenu();
   
   console.log(state);
+  renderGameBoard(state);
 }
 
 // Event listeners

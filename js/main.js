@@ -1,4 +1,4 @@
-import {state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn} from "./state.js";
+import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn } from "./state.js";
 import { showHideGameBoard, showHideStartMenu } from "./render.js";
 
 const startBtnContainer = document.querySelector(".button-container");
@@ -22,8 +22,6 @@ function startGame(target) {
 }
 
 // Event listeners
-// cpuBtn.addEventListener("click", startGame);
-
 startBtnContainer.addEventListener("click", (e) => {
   if (!e.target.classList.contains("btn-newgame")) {
     return;

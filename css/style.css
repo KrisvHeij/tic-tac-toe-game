@@ -411,7 +411,7 @@ button {
   letter-spacing: 1.25px;
 }
 
-.score-player-1 {
+.score-x {
   background-color: var(--teal-400);
 }
 
@@ -419,7 +419,7 @@ button {
   background-color: var(--slate-300);
 }
 
-.score-player-2 {
+.score-o {
   background-color: var(--amber-400);
 }
 

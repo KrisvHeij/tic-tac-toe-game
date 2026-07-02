@@ -23,10 +23,12 @@ function startGame(target) {
   renderGameBoard(state);
 }
 
-function playTile(tile) {
-  const tileMark = tile.document.querySelector(".tile-played");
+function playTile(button) {
+  const tileSvg = button.querySelector(".tile-played");
+  const tilePlayed = button.dataset.tile;
+  console.log(tilePlayed)
 
-  showPlayedTile()
+  updateState(tilePlayed);
 }
 
 // Event listeners

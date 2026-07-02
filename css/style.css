@@ -362,7 +362,7 @@ button {
 .tile-hover svg,
 .tile-played svg {
   width: clamp(2.5rem, calc(1.069rem + 6.107vw), 4rem);
-  height: auto;
+  height: clamp(2.5rem, calc(1.069rem + 6.107vw), 4rem);
 }
 
 .turn-x .tile:hover:not(.tile-x) .tile-hover,

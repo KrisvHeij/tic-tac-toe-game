@@ -44,6 +44,11 @@ export function renderGameBoard(state) {
   scoreTextX.textContent = state.playerOne.mark === "x" ? state.playerOne.name : state.playerTwo.name;
   scoreTextO.textContent = state.playerTwo.mark ==="o" ? state.playerTwo.name : state.playerOne.name;
 
-  setGameTilesHoverState("x");
+  setGameTilesHoverState(state.playerTurn);
 }
 
+export function renderGameTile(state, tile, svg) {
+  tile.classList.add(`tile-${state.playerTurn}`);
+  svg.innerHTML = `${svgs[state.playerTurn]}`;
+  tile.disabled = true;
+}

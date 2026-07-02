@@ -1,5 +1,5 @@
 import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard } from "./state.js";
-import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTile  } from "./render.js";
+import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnDisplay  } from "./render.js";
 
 const startBtnContainer = document.querySelector(".button-container");
 const cpuBtn = document.querySelector(".btn-vs-cpu");
@@ -25,10 +25,16 @@ function startGame(target) {
 function playTile(button) {
   const tileSvg = button.querySelector(".tile-played");
   const tilePlayed = button.dataset.tile;
-  console.log(tilePlayed)
+  // console.log(tilePlayed)
 
   updateGameBoard(tilePlayed);
   renderGameTile(state, button, tileSvg);
+  setPlayerTurn();
+  
+  toggleTurnDisplay(state.playerTurn);
+  renderGameTilesHoverState(state.playerTurn);
+  // console.log(state.playerTurn)
+  
 }
 
 // Event listeners
@@ -48,5 +54,3 @@ gameBoardElements[0].addEventListener("click", (e) => {
     playTile(button);
   }
 })
-
-console.log(state);

@@ -27,9 +27,23 @@ export function showHideGameBoard() {
   gameBoard.classList.toggle("hidden");
 }
 
-export function setGameTilesHoverState(turn) {
+export function toggleTurnDisplay(turn) {
   let playerTurn = turn === "x" ? "turn-x" : "turn-o";
-  gameBoardTilesContainer.classList.add(playerTurn);
+  
+  if (turn === "x") {
+    gameBoardTilesContainer.classList.remove(playerTurn);
+    gameBoardTilesContainer.classList.add("turn-o");
+  }
+  if (turn === "o") {
+    gameBoardTilesContainer.classList.remove(playerTurn);
+    gameBoardTilesContainer.classList.add("turn-x");
+  }
+}
+
+export function renderGameTilesHoverState(turn) {
+  let playerTurn = turn === "x" ? "turn-x" : "turn-o";
+  // gameBoardTilesContainer.classList.add(playerTurn);
+  
 
   gameTilesHover.forEach((tile) => {
     tile.innerHTML = playerTurn === "turn-x" ? `${svgs.outlineX}` : `${svgs.outlineO}`;
@@ -44,7 +58,7 @@ export function renderGameBoard(state) {
   scoreTextX.textContent = state.playerOne.mark === "x" ? state.playerOne.name : state.playerTwo.name;
   scoreTextO.textContent = state.playerTwo.mark ==="o" ? state.playerTwo.name : state.playerOne.name;
 
-  setGameTilesHoverState(state.playerTurn);
+  renderGameTilesHoverState(state.playerTurn);
 }
 
 export function renderGameTile(state, tile, svg) {

@@ -38,6 +38,7 @@ export function setPlayers(target) {
 
 export function setPlayerTurn() {
   state.playerTurn = state.playerTurn === "x" ? "o" : "x";
+  console.log(state.playerTurn)
 }
 
 export function updateGameBoard(tile) {

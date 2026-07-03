@@ -365,8 +365,8 @@ button {
   height: clamp(2.5rem, calc(1.069rem + 6.107vw), 4rem);
 }
 
-.turn-x .tile:hover:not(.tile-x) .tile-hover,
-.turn-o .tile:hover:not(.tile-o) .tile-hover {
+.turn-x .tile:hover:not(.tile-x):not(.tile-o) .tile-hover,
+.turn-o .tile:hover:not(.tile-o):not(.tile-x) .tile-hover {
   display: inline;
 }
 

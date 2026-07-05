@@ -32,7 +32,10 @@ function playTile(button) {
   updateGameBoard(tilePlayed);
   renderGameTile(state, button, tileSvg);
   // console.log("na renderGameTile:", button.classList);
-  isWinner(winningCombinations, state.playerTurn);
+  if (isWinner(winningCombinations, state.playerTurn)) {
+    console.log("Winner!!");
+  }
+  
   setPlayerTurn();
   // console.log("na setPlayerTurn:", state.playerTurn);
   toggleTurnOnGameBoardTilesContainer(state.playerTurn);

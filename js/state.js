@@ -43,5 +43,5 @@ export function setPlayerTurn() {
 
 export function updateGameBoard(tile) {
   state.gameBoard[tile - 1] = state.playerTurn;
-  console.log(state.gameBoard)
+  // console.log(state.gameBoard)
 }

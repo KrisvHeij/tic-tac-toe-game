@@ -1,6 +1,6 @@
 import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore } from "./state.js";
 // import { isWinner } from "./gameLogic.js";
-import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay } from "./render.js";
+import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, showScore,  showWinnerDialog } from "./render.js";
 import { winningCombinations, isWinner } from "./gameLogic.js";
 
 const startBtnContainer = document.querySelector(".button-container");
@@ -34,7 +34,8 @@ function playTile(button) {
   // console.log("na renderGameTile:", button.classList);
   if (isWinner(winningCombinations, state.playerTurn)) {
     updateScore(state.playerTurn);
-    // showWinnerDialog();
+    showScore(state.playerTurn, state.score)
+    showWinnerDialog(state);
     return;
   }
   
@@ -55,6 +56,7 @@ startBtnContainer.addEventListener("click", (e) => {
     return;
   } else {
     startGame(e.target);
+    console.log(state)
   }
 });
 

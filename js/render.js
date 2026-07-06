@@ -6,6 +6,7 @@ const scoreTextO = document.getElementById("scoreTextO");
 const gameBoardTilesContainer = document.querySelector(".game-board-tiles");
 const turnDisplaySvg = document.querySelector(".turn-display-svg")
 const gameTilesHover = document.querySelectorAll(".tile-hover");
+const winnerDialog = document.getElementById("next-round-dialog");
 
 const svgs = {
   x: `<svg viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z" fill="#31C3BD" fill-rule="evenodd"/></svg>`,
@@ -76,4 +77,21 @@ export function renderGameTile(state, tile, svg) {
 
 export function changeTurnDisplay(turn) {
   turnDisplaySvg.innerHTML = turn === "x" ? `${svgs.xSlate300}` : `${svgs.oSlate300}`;
+}
+
+export function showScore(winner, score) {
+  const scoreElement = winner === "x" ? document.getElementById(`score${winner.toUpperCase()}`) : document.getElementById(`score${winner.toUpperCase()}`);
+  scoreElement.textContent = score[winner];
+}
+
+export function showWinnerDialog(state) {
+  const winnerText = document.querySelector("#winner-text h3");
+  const winnerRound = document.getElementById("winner-icon-text");
+  
+  winnerText.textContent = state.playerTurn === state.playerOne.mark ? "you won!" : "oh no, you lost...";
+
+  winnerRound.innerHTML = state.playerTurn === state.playerOne.mark ? `${svgs.x} takes the round` : `${svgs.o} takes the round`;
+  winnerRound.classList = state.playerTurn === state.playerOne.mark ? "--winner-x" : "--winner-o";
+  winnerDialog.show();
+  
 }

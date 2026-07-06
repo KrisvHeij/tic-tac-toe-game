@@ -532,17 +532,17 @@ button {
 
 /* Styles for winners */
 /* Winner X */
-.next-round-dialog.--winner-x svg {
+/* .next-round-dialog.--winner-x svg {
   fill: var(--teal-400);
-}
-.next-round-dialog.--winner-x p {
+} */
+.next-round-dialog .--winner-x {
   color: var(--teal-400);
 }
 /* Winner O */
-.next-round-dialog.--winner-o svg {
+/* .next-round-dialog.--winner-o svg {
   fill: var(--amber-400);
-}
-.next-round-dialog.--winner-o p {
+} */
+.next-round-dialog .--winner-o {
   color: var(--amber-400);
 }
 /* Tied */

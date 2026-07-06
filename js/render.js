@@ -58,8 +58,8 @@ export function renderGameTilesHoverState(turn) {
 }
 
 export function renderGameBoard(state) {
-  scoreElementX.textContent = state.scoreX;
-  scoreElementO.textContent = state.scoreO;
+  scoreElementX.textContent = state.score.x;
+  scoreElementO.textContent = state.score.o;
   scoreElementTies.textContent = state.ties;
   // Kan de code hieronder korter/anders?
   scoreTextX.textContent = state.playerOne.mark === "x" ? state.playerOne.name : state.playerTwo.name;

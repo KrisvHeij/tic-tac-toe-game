@@ -12,8 +12,10 @@ export function createInitialState() {
       name: null
     },
     playerTurn: "x",
-    scoreX: 0,
-    scoreO: 0,
+    score : {
+      x: 0,
+      o: 0
+    },
     ties: 0
   }
 }
@@ -44,4 +46,8 @@ export function setPlayerTurn() {
 export function updateGameBoard(tile) {
   state.gameBoard[tile - 1] = state.playerTurn;
   // console.log(state.gameBoard)
+}
+
+export function updateScore(winner) {
+  state.score[winner]++;
 }

@@ -86,26 +86,26 @@ export function renderScore(winner, score) {
   scoreElement.textContent = score[winner];
 }
 
-function renderWinnerTextVsCpu(winner, playerOne) {
-  winnerText.textContent = winner === playerOne ? "you won!" : "oh no, you lost...";
+function renderWinnerText(winner, playerOne, playerTwo) {
+  if (playerOne.name === "cpu" || playerTwo.name === "cpu") {
+    winnerText.textContent = winner === playerOne.mark ? "you won!" : "oh no, you lost...";
+  } else {
+    winnerText.textContent = winner === playerOne.mark ? `${playerOne.name} wins!` : `${playerTwo.name} wins!`;
+  }
 }
 
-function renderWinnerTextMultiplayer(winner, playerOne, playerTwo) {
-  winnerText.textContent = winner === playerOne.mark ? `${playerOne.name} wins!` : `${playerTwo.name} wins!`;
+function renderWinnerTextVsCpu(winner, playerOne, playerTwo) {
+  renderWinnerText(winner, playerOne, playerTwo);
+
+  winnerRound.classList = winner === playerOne.mark ? `--winner-${winner}` : `--winner-${playerTwo.mark}`;
+  winnerRound.innerHTML = winner === playerOne.mark ? `${svgs[playerOne.mark]} takes the round` : `${svgs[playerTwo.mark]} takes the round`;
 }
 
 export function showWinnerDialog(state) {
   const winner = state.playerTurn;
-  
-  // renderWinnerTextVsCpu(winner, state.playerOne.mark);
-  renderWinnerTextMultiplayer(winner, state.playerOne, state.playerTwo);
 
-  // winnerRound.innerHTML = winner === state.playerOne.mark ? `${svgs.x} takes the round` : `${svgs.o} takes the round`;
-  
-  // winnerRound.classList = winner === state.playerOne.mark ? "--winner-x" : "--winner-o";
+  renderWinnerText(winner, state.playerOne, state.playerTwo);
+  renderWinnerTextVsCpu(winner, state.playerOne, state.playerTwo);
   winnerDialog.show();
-  console.log(state);
-}
-
-// Verder gaan met de winner icons goed laten zien (juiste mark en kleur).
-  
+  // console.log(state);
+} 

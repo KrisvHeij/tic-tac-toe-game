@@ -39,7 +39,6 @@ export function toggleTurnOnGameBoardTilesContainer(turn) {
   gameBoardTilesContainer.classList.toggle("turn-x");
   gameBoardTilesContainer.classList.toggle("turn-o");
 
-
   // if (turn === "x") {
   //   gameBoardTilesContainer.classList.remove(playerTurn);
   //   gameBoardTilesContainer.classList.add("turn-o");
@@ -53,7 +52,6 @@ export function toggleTurnOnGameBoardTilesContainer(turn) {
 export function renderGameTilesHoverState(turn) {
   let playerTurn = turn === "x" ? "turn-x" : "turn-o";
   // gameBoardTilesContainer.classList.add(playerTurn);
-  
 
   gameTilesHover.forEach((tile) => {
     tile.innerHTML = playerTurn === "turn-x" ? `${svgs.outlineX}` : `${svgs.outlineO}`;
@@ -94,7 +92,7 @@ function renderWinnerText(winner, playerOne, playerTwo) {
   }
 }
 
-function renderWinnerTextVsCpu(winner, playerOne, playerTwo) {
+function renderNextRoundText(winner, playerOne, playerTwo) {
   renderWinnerText(winner, playerOne, playerTwo);
 
   winnerRound.classList = winner === playerOne.mark ? `--winner-${winner}` : `--winner-${playerTwo.mark}`;
@@ -105,7 +103,7 @@ export function showWinnerDialog(state) {
   const winner = state.playerTurn;
 
   renderWinnerText(winner, state.playerOne, state.playerTwo);
-  renderWinnerTextVsCpu(winner, state.playerOne, state.playerTwo);
+  renderNextRoundText(winner, state.playerOne, state.playerTwo);
   winnerDialog.show();
   // console.log(state);
 } 

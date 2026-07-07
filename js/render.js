@@ -79,9 +79,13 @@ export function changeTurnDisplay(turn) {
   turnDisplaySvg.innerHTML = turn === "x" ? `${svgs.xSlate300}` : `${svgs.oSlate300}`;
 }
 
-export function renderScore(winner, score) {
-  const scoreElement = winner === "x" ? document.getElementById(`score${winner.toUpperCase()}`) : document.getElementById(`score${winner.toUpperCase()}`);
+export function renderScore(winner = null, score) {
+  if (winner === "x" || winner === "o") {
+    const scoreElement = winner === "x" ? document.getElementById(`score${winner.toUpperCase()}`) : document.getElementById(`score${winner.toUpperCase()}`);
   scoreElement.textContent = score[winner];
+  } else {
+    scoreElementTies.textContent = score;
+  }
 }
 
 function renderWinnerText(winner, playerOne, playerTwo) {
@@ -92,18 +96,29 @@ function renderWinnerText(winner, playerOne, playerTwo) {
   }
 }
 
-function renderNextRoundText(winner, playerOne, playerTwo) {
-  renderWinnerText(winner, playerOne, playerTwo);
-
-  winnerRound.classList = winner === playerOne.mark ? `--winner-${winner}` : `--winner-${playerTwo.mark}`;
-  winnerRound.innerHTML = winner === playerOne.mark ? `${svgs[playerOne.mark]} takes the round` : `${svgs[playerTwo.mark]} takes the round`;
+function renderNextRoundText(winner, playerOne = null, playerTwo = null) {
+  // renderWinnerText(winner, playerOne, playerTwo);
+  if (winner === "x" || winner === "o") {
+    winnerRound.classList = winner === playerOne.mark ? `--winner-${winner}` : `--winner-${playerTwo.mark}`;
+    winnerRound.innerHTML = winner === playerOne.mark ? `${svgs[playerOne.mark]} takes the round` : `${svgs[playerTwo.mark]} takes the round`;
+  } else {
+    winnerRound.classList = "--tied";
+    winnerRound.textContent = "Round Tied";
+  }
+  // console.log(winner)
 }
 
 export function showWinnerDialog(state) {
   const winner = state.playerTurn;
 
-  renderWinnerText(winner, state.playerOne, state.playerTwo);
-  renderNextRoundText(winner, state.playerOne, state.playerTwo);
-  winnerDialog.show();
+  if (winner === "x" || winner === "o") {
+    renderWinnerText(winner, state.playerOne, state.playerTwo);
+    renderNextRoundText(winner, state.playerOne, state.playerTwo);
+    winnerDialog.show();
+    return;
+  } else {
+    renderNextRoundText(winner, "", "");
+    winnerDialog.show();
+  }
   // console.log(state);
 } 

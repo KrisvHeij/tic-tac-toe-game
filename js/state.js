@@ -49,5 +49,13 @@ export function updateGameBoard(tile) {
 }
 
 export function updateScore(winner) {
-  state.score[winner]++;
+  if (winner === "x" || winner === "o") {
+    state.score[winner]++;
+  } else {
+    state.ties++;
+  }
+}
+
+export function setTie() {
+  state.playerTurn = "tie";
 }

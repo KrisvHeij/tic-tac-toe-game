@@ -546,7 +546,7 @@ button {
   color: var(--amber-400);
 }
 /* Tied */
-.next-round-dialog.--tied p {
+.next-round-dialog .--tied {
   color: var(--slate-300);
 }
 

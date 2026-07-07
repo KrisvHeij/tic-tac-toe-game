@@ -1,7 +1,7 @@
 import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore } from "./state.js";
 // import { isWinner } from "./gameLogic.js";
 import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog } from "./render.js";
-import { winningCombinations, isWinner } from "./gameLogic.js";
+import { winningCombinations, isWinner, isBoardFull } from "./gameLogic.js";
 
 const startBtnContainer = document.querySelector(".button-container");
 const cpuBtn = document.querySelector(".btn-vs-cpu");
@@ -37,6 +37,9 @@ function playTile(button) {
     renderScore(state.playerTurn, state.score)
     showWinnerDialog(state);
     return;
+  }
+  if (isBoardFull(state)) {
+    console.log("Its a tie!")
   }
   
   setPlayerTurn();

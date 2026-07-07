@@ -77,3 +77,4 @@ gameBoardElements[0].addEventListener("click", (e) => {
 })
 
 
+// isBoardFull functie is klaar, verder gaan met restart/quit buttons/state

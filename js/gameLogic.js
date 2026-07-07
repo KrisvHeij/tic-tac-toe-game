@@ -1,9 +1,6 @@
 import { state } from "./state.js";
 
 export const winningCombinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-// const winC = [[0, 1, 2], [3, 4, 5], [0, 4, 8]];
-
-// const gameBoard = ["x", "o", null, "x", "o", null, "x", "o", null];
 
 export function isWinner(arr, playerTurn) {
   // console.log("gameBoard:", state.gameBoard);
@@ -14,4 +11,8 @@ export function isWinner(arr, playerTurn) {
       return state.gameBoard[innerVal] === playerTurn;
     })
   })
+}
+
+export function isBoardFull(state) {
+  return state.gameBoard.every(tile => tile !== null)
 }

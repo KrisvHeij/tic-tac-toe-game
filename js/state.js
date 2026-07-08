@@ -60,6 +60,6 @@ export function setTie() {
   state.playerTurn = "tie";
 }
 
-export function setNextRound() {
-  
+export function setGameBoardForNextRound() {
+  state.gameBoard.fill(null);
 }

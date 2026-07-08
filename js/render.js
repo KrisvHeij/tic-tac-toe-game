@@ -4,7 +4,8 @@ const scoreElementTies = document.getElementById("scoreTies");
 const scoreTextX = document.getElementById("scoreTextX");
 const scoreTextO = document.getElementById("scoreTextO");
 const gameBoardTilesContainer = document.querySelector(".game-board-tiles");
-const turnDisplaySvg = document.querySelector(".turn-display-svg")
+const turnDisplaySvg = document.querySelector(".turn-display-svg");
+const gameTiles = document.querySelectorAll(".tile");
 const gameTilesHover = document.querySelectorAll(".tile-hover");
 const winnerDialog = document.getElementById("next-round-dialog");
 const winnerText = document.querySelector("#winner-text h3");
@@ -121,4 +122,22 @@ export function showWinnerDialog(state) {
     winnerDialog.show();
   }
   // console.log(state);
-} 
+}
+
+function resetGameTiles() {
+  gameTiles.forEach((tile) => {
+    tile.querySelector(".tile-played").innerHTML = "";
+    tile.classList.remove("tile-x", "tile-o");
+    tile.disabled = false;
+  })
+}
+
+export function renderNextRound(state) {
+  winnerDialog.close();
+  changeTurnDisplay(state.playerTurn);
+  toggleTurnOnGameBoardTilesContainer(state.playerTurn);
+  resetGameTiles();
+  renderGameTilesHoverState(state.playerTurn);
+}
+
+// resetGameTiles & renderNextRound verder testen

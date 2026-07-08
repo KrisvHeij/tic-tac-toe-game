@@ -59,3 +59,7 @@ export function updateScore(winner) {
 export function setTie() {
   state.playerTurn = "tie";
 }
+
+export function setNextRound() {
+  
+}

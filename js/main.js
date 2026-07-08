@@ -5,6 +5,7 @@ import { winningCombinations, isWinner, isBoardFull } from "./gameLogic.js";
 
 const startBtnContainer = document.querySelector(".button-container");
 const cpuBtn = document.querySelector(".btn-vs-cpu");
+const btnNextRound = document.getElementById("btnNextRound");
 
 function startGame(target) {
   const radioInputs = document.querySelectorAll(".pick-mark-container input[type=radio]");
@@ -57,6 +58,10 @@ function playTile(button) {
   // console.log(state)
 }
 
+function nextRound() {
+  setNextRound();
+}
+
 // Event listeners
 startBtnContainer.addEventListener("click", (e) => {
   if (!e.target.classList.contains("btn-newgame")) {
@@ -76,5 +81,6 @@ gameBoardElements[0].addEventListener("click", (e) => {
   }
 })
 
+btnNextRound.addEventListener("click", nextRound);
 
 // isBoardFull functie is klaar, verder gaan met restart/quit buttons/state

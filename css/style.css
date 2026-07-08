@@ -517,8 +517,7 @@ button {
   margin-inline-end: var(--spacing-300);
 }
 
-.next-round-dialog p,
-.round-tied h3 {
+.next-round-dialog p {
   margin-block-end: var(--spacing-300);
   display: flex;
   justify-content: center;

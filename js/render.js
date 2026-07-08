@@ -89,11 +89,13 @@ export function renderScore(winner = null, score) {
   }
 }
 
-function renderWinnerText(winner, playerOne, playerTwo) {
+function renderWinnerText(winner = null, playerOne = null, playerTwo = null) {
   if (playerOne.name === "cpu" || playerTwo.name === "cpu") {
     winnerText.textContent = winner === playerOne.mark ? "you won!" : "oh no, you lost...";
-  } else {
+  } else if (playerOne.name === "p2" || playerTwo.name === "p2") {
     winnerText.textContent = winner === playerOne.mark ? `${playerOne.name} wins!` : `${playerTwo.name} wins!`;
+  } else {
+    winnerText.textContent = "";
   }
 }
 
@@ -110,6 +112,7 @@ function renderNextRoundText(winner, playerOne = null, playerTwo = null) {
 }
 
 export function showWinnerDialog(state) {
+  console.log(state)
   const winner = state.playerTurn;
 
   if (winner === "x" || winner === "o") {
@@ -118,6 +121,7 @@ export function showWinnerDialog(state) {
     winnerDialog.show();
     return;
   } else {
+    renderWinnerText("", "", "");
     renderNextRoundText(winner, "", "");
     winnerDialog.show();
   }
@@ -140,4 +144,4 @@ export function renderNextRound(state) {
   renderGameTilesHoverState(state.playerTurn);
 }
 
-// resetGameTiles & renderNextRound verder testen
+// resetGameTiles & renderNextRound verder testen & round tied checken

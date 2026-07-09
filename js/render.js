@@ -4,7 +4,8 @@ const scoreElementTies = document.getElementById("scoreTies");
 const scoreTextX = document.getElementById("scoreTextX");
 const scoreTextO = document.getElementById("scoreTextO");
 const gameBoardTilesContainer = document.querySelector(".game-board-tiles");
-const turnDisplaySvg = document.querySelector(".turn-display-svg")
+const turnDisplaySvg = document.querySelector(".turn-display-svg");
+const gameTiles = document.querySelectorAll(".tile");
 const gameTilesHover = document.querySelectorAll(".tile-hover");
 const winnerDialog = document.getElementById("next-round-dialog");
 const winnerText = document.querySelector("#winner-text h3");
@@ -88,11 +89,13 @@ export function renderScore(winner = null, score) {
   }
 }
 
-function renderWinnerText(winner, playerOne, playerTwo) {
+function renderWinnerText(winner = null, playerOne = null, playerTwo = null) {
   if (playerOne.name === "cpu" || playerTwo.name === "cpu") {
     winnerText.textContent = winner === playerOne.mark ? "you won!" : "oh no, you lost...";
-  } else {
+  } else if (playerOne.name === "p2" || playerTwo.name === "p2") {
     winnerText.textContent = winner === playerOne.mark ? `${playerOne.name} wins!` : `${playerTwo.name} wins!`;
+  } else {
+    winnerText.textContent = "";
   }
 }
 
@@ -109,6 +112,7 @@ function renderNextRoundText(winner, playerOne = null, playerTwo = null) {
 }
 
 export function showWinnerDialog(state) {
+  console.log(state)
   const winner = state.playerTurn;
 
   if (winner === "x" || winner === "o") {
@@ -117,8 +121,27 @@ export function showWinnerDialog(state) {
     winnerDialog.show();
     return;
   } else {
+    renderWinnerText("", "", "");
     renderNextRoundText(winner, "", "");
     winnerDialog.show();
   }
   // console.log(state);
-} 
+}
+
+function resetGameTiles() {
+  gameTiles.forEach((tile) => {
+    tile.querySelector(".tile-played").innerHTML = "";
+    tile.classList.remove("tile-x", "tile-o");
+    tile.disabled = false;
+  })
+}
+
+export function renderNextRound(state) {
+  winnerDialog.close();
+  changeTurnDisplay(state.playerTurn);
+  toggleTurnOnGameBoardTilesContainer(state.playerTurn);
+  resetGameTiles();
+  renderGameTilesHoverState(state.playerTurn);
+}
+
+// resetGameTiles & renderNextRound verder testen & round tied checken

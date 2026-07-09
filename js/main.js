@@ -1,6 +1,6 @@
-import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore, setTie } from "./state.js";
+import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore, setTie, setGameBoardForNextRound } from "./state.js";
 // import { isWinner } from "./gameLogic.js";
-import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog } from "./render.js";
+import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, renderNextRound } from "./render.js";
 import { winningCombinations, isWinner, isBoardFull } from "./gameLogic.js";
 
 const startBtnContainer = document.querySelector(".button-container");
@@ -59,7 +59,9 @@ function playTile(button) {
 }
 
 function nextRound() {
-  setNextRound();
+  setGameBoardForNextRound();
+  setPlayerTurn();
+  renderNextRound(state);
 }
 
 // Event listeners

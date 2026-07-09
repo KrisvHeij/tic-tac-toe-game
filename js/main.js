@@ -1,13 +1,15 @@
-import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore, setTie, setGameBoardForNextRound } from "./state.js";
+import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore, setTie, setGameBoardForNextRound, createInitialState, resetState } from "./state.js";
 // import { isWinner } from "./gameLogic.js";
-import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, renderNextRound } from "./render.js";
+import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, resetGameTiles, renderNextRound } from "./render.js";
 import { winningCombinations, isWinner, isBoardFull } from "./gameLogic.js";
 
 const startBtnContainer = document.querySelector(".button-container");
 const cpuBtn = document.querySelector(".btn-vs-cpu");
 const btnNextRound = document.getElementById("btnNextRound");
+const btnQuit = document.getElementById("btnQuit");
 
 function startGame(target) {
+  console.log(state);
   const radioInputs = document.querySelectorAll(".pick-mark-container input[type=radio]");
 
   for (const radio of radioInputs) {
@@ -18,6 +20,7 @@ function startGame(target) {
   
   setPlayerTwoMark();
   setPlayers(target);
+  changeTurnDisplay(state.playerTurn);
   showHideGameBoard();
   showHideStartMenu();
   
@@ -64,6 +67,14 @@ function nextRound() {
   renderNextRound(state);
 }
 
+function quitGame() {
+  resetState();
+  resetGameTiles();
+  showHideGameBoard();
+  showHideStartMenu();
+  console.log(state)
+}
+
 // Event listeners
 startBtnContainer.addEventListener("click", (e) => {
   if (!e.target.classList.contains("btn-newgame")) {
@@ -84,5 +95,7 @@ gameBoardElements[0].addEventListener("click", (e) => {
 })
 
 btnNextRound.addEventListener("click", nextRound);
+
+btnQuit.addEventListener("click", quitGame);
 
 // isBoardFull functie is klaar, verder gaan met restart/quit buttons/state

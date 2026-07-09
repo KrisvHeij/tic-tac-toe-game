@@ -72,7 +72,7 @@ function quitGame() {
   resetGameTiles();
   showHideGameBoard();
   showHideStartMenu();
-  console.log(state)
+  // console.log(state)
 }
 
 // Event listeners

@@ -128,7 +128,7 @@ export function showWinnerDialog(state) {
   // console.log(state);
 }
 
-function resetGameTiles() {
+export function resetGameTiles() {
   gameTiles.forEach((tile) => {
     tile.querySelector(".tile-played").innerHTML = "";
     tile.classList.remove("tile-x", "tile-o");

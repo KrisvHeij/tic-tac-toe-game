@@ -20,6 +20,10 @@ export function createInitialState() {
   }
 }
 
+export function resetState() {
+  Object.assign(state, createInitialState());
+}
+
 export function setSelectedMark(mark) {
   state.playerOne.mark = mark;
 }

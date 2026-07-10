@@ -24,8 +24,12 @@ function startGame(target) {
   showHideGameBoard();
   showHideStartMenu();
   
-  // console.log(state);
   renderGameBoard(state);
+
+  if (state.playerTurn === state.playerTwo.mark && state.playerTwo.name === "cpu") {
+    randomMoveCpu(state.gameBoard, state.playerTurn);
+  }
+  console.log(state)
 }
 
 function playTile(button) {
@@ -58,7 +62,13 @@ function playTile(button) {
   // console.log(state.playerTurn)
   changeTurnDisplay(state.playerTurn);
   
-  // console.log(state)
+  if (state.playerTurn === state.playerTwo.mark && state.playerTwo.name === "cpu") {
+    randomMoveCpu(state.gameBoard, state.playerTurn);
+  }
+
+  // verdergaan met spelverloop nar cpu turm
+
+  console.log(state)
 }
 
 function nextRound() {
@@ -98,4 +108,4 @@ btnNextRound.addEventListener("click", nextRound);
 
 btnQuit.addEventListener("click", quitGame);
 
-// isBoardFull functie is klaar, verder gaan met restart/quit buttons/state
+// verdergaan met spelverloop nar cpu turm

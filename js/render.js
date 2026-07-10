@@ -143,5 +143,3 @@ export function renderNextRound(state) {
   resetGameTiles();
   renderGameTilesHoverState(state.playerTurn);
 }
-
-// resetGameTiles & renderNextRound verder testen & round tied checken

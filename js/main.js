@@ -1,10 +1,11 @@
 import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore, setTie, setGameBoardForNextRound, createInitialState, resetState } from "./state.js";
 // import { isWinner } from "./gameLogic.js";
-import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, resetGameTiles, renderNextRound } from "./render.js";
+import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, resetGameTiles, renderNextRound, closeRestartDialog } from "./render.js";
 import { winningCombinations, isWinner, isBoardFull } from "./gameLogic.js";
 
 const startBtnContainer = document.querySelector(".button-container");
 const cpuBtn = document.querySelector(".btn-vs-cpu");
+const btnRestart = document.getElementById("btnRestart");
 const btnNextRound = document.getElementById("btnNextRound");
 const btnQuit = document.getElementById("btnQuit");
 
@@ -94,8 +95,13 @@ gameBoardElements[0].addEventListener("click", (e) => {
   }
 })
 
+btnRestart.addEventListener("click", () => {
+  quitGame();
+  closeRestartDialog();
+})
+
 btnNextRound.addEventListener("click", nextRound);
 
 btnQuit.addEventListener("click", quitGame);
 
-// isBoardFull functie is klaar, verder gaan met restart/quit buttons/state
+// vs CPU random zetten inplementeren

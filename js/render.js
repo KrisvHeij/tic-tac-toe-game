@@ -144,4 +144,7 @@ export function renderNextRound(state) {
   renderGameTilesHoverState(state.playerTurn);
 }
 
-// resetGameTiles & renderNextRound verder testen & round tied checken
+export function closeRestartDialog() {
+  const restartDialog = document.getElementById("restart-dialog");
+  restartDialog.close();
+}

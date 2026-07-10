@@ -1,7 +1,7 @@
 import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore, setTie, setGameBoardForNextRound, createInitialState, resetState } from "./state.js";
 // import { isWinner } from "./gameLogic.js";
 import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, resetGameTiles, renderNextRound } from "./render.js";
-import { winningCombinations, isWinner, isBoardFull } from "./gameLogic.js";
+import { winningCombinations, isWinner, isBoardFull, randomMoveCpu } from "./gameLogic.js";
 
 const startBtnContainer = document.querySelector(".button-container");
 const cpuBtn = document.querySelector(".btn-vs-cpu");

@@ -84,8 +84,6 @@ export function renderAllGameTiles(gameBoard, playerTurn) {
       gameTiles[index].querySelector(".tile-played").innerHTML = `${svgs[mark]}`;
       gameTiles[index].disabled = true;
     }
-    
-    
   })
 }
 

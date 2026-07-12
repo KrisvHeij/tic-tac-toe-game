@@ -1,7 +1,7 @@
 import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore, setTie, setGameBoardForNextRound, createInitialState, resetState } from "./state.js";
 // import { isWinner } from "./gameLogic.js";
-import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, resetGameTiles, renderNextRound, closeRestartDialog } from "./render.js";
-import { winningCombinations, isWinner, isBoardFull } from "./gameLogic.js";
+import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, renderAllGameTiles, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, resetGameTiles, renderNextRound } from "./render.js";
+import { winningCombinations, isWinner, isBoardFull, randomMoveCpu } from "./gameLogic.js";
 
 const startBtnContainer = document.querySelector(".button-container");
 const cpuBtn = document.querySelector(".btn-vs-cpu");
@@ -25,8 +25,35 @@ function startGame(target) {
   showHideGameBoard();
   showHideStartMenu();
   
-  // console.log(state);
   renderGameBoard(state);
+
+  cpuMakesMoves();
+  // console.log(state)
+}
+
+function cpuMakesMoves() {
+  if (state.playerTurn === state.playerTwo.mark && state.playerTwo.name === "cpu") {
+    randomMoveCpu(state.gameBoard, state.playerTurn);
+    setTimeout(() => {
+      renderAllGameTiles(state.gameBoard, state.playerTurn);
+      if (isWinner(winningCombinations, state.playerTurn)) {
+        updateScore(state.playerTurn);
+        renderScore(state.playerTurn, state.score)
+        showWinnerDialog(state);
+        return;
+      }
+      if (isBoardFull(state)) {
+        updateScore(state.ties);
+        renderScore(" ", state.ties);
+        setTie(state);
+        showWinnerDialog(state);
+      }
+      setPlayerTurn();
+      toggleTurnOnGameBoardTilesContainer(state.playerTurn);
+      renderGameTilesHoverState(state.playerTurn);
+      changeTurnDisplay(state.playerturn);
+    }, 250); 
+  }
 }
 
 function playTile(button) {
@@ -59,7 +86,9 @@ function playTile(button) {
   // console.log(state.playerTurn)
   changeTurnDisplay(state.playerTurn);
   
-  // console.log(state)
+  cpuMakesMoves();
+
+  console.log(state)
 }
 
 function nextRound() {
@@ -95,13 +124,11 @@ gameBoardElements[0].addEventListener("click", (e) => {
   }
 })
 
-btnRestart.addEventListener("click", () => {
-  quitGame();
-  closeRestartDialog();
-})
-
-btnNextRound.addEventListener("click", nextRound);
+btnNextRound.addEventListener("click", () => {
+  nextRound();
+  cpuMakesMoves();
+});
 
 btnQuit.addEventListener("click", quitGame);
 
-// vs CPU random zetten inplementeren
+// verdergaan met btn-restart + functie

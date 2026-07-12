@@ -16,3 +16,10 @@ export function isWinner(arr, playerTurn) {
 export function isBoardFull(state) {
   return state.gameBoard.every(tile => tile !== null)
 }
+
+export function randomMoveCpu(gameBoard, playerTurn) {
+  const emptyTiles = gameBoard.map((_, i) => i).filter(i => gameBoard[i] === null);
+  const randomNum = Math.floor((Math.random() * emptyTiles.length));
+  const selectedTile = emptyTiles[randomNum];
+  gameBoard[selectedTile] = playerTurn;
+}

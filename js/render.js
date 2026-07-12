@@ -76,6 +76,17 @@ export function renderGameTile(state, tile, svg) {
   tile.disabled = true;
 }
 
+export function renderAllGameTiles(gameBoard, playerTurn) {
+  gameBoard.forEach((mark, index) => {
+    // const tileSvg = gameTiles.querySelectorAll(".tile-played");
+    if (mark !== null) {
+      gameTiles[index].classList.add(`tile-${mark}`);
+      gameTiles[index].querySelector(".tile-played").innerHTML = `${svgs[mark]}`;
+      gameTiles[index].disabled = true;
+    }
+  })
+}
+
 export function changeTurnDisplay(turn) {
   turnDisplaySvg.innerHTML = turn === "x" ? `${svgs.xSlate300}` : `${svgs.oSlate300}`;
 }
@@ -142,9 +153,4 @@ export function renderNextRound(state) {
   toggleTurnOnGameBoardTilesContainer(state.playerTurn);
   resetGameTiles();
   renderGameTilesHoverState(state.playerTurn);
-}
-
-export function closeRestartDialog() {
-  const restartDialog = document.getElementById("restart-dialog");
-  restartDialog.close();
 }

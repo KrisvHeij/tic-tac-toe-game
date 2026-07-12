@@ -81,7 +81,7 @@ export function renderAllGameTiles(gameBoard, playerTurn) {
     // const tileSvg = gameTiles.querySelectorAll(".tile-played");
     if (mark !== null) {
       gameTiles[index].classList.add(`tile-${mark}`);
-      gameTiles[index].querySelector(".tile-played").innerHTML = `${svgs[playerTurn]}`;
+      gameTiles[index].querySelector(".tile-played").innerHTML = `${svgs[mark]}`;
       gameTiles[index].disabled = true;
     }
     

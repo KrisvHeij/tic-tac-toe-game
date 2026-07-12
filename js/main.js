@@ -26,11 +26,33 @@ function startGame(target) {
   
   renderGameBoard(state);
 
+  cpuMakesMoves();
+  // console.log(state)
+}
+
+function cpuMakesMoves() {
   if (state.playerTurn === state.playerTwo.mark && state.playerTwo.name === "cpu") {
     randomMoveCpu(state.gameBoard, state.playerTurn);
-    renderAllGameTiles(state.gameBoard, state.playerTurn)
+    setTimeout(() => {
+      renderAllGameTiles(state.gameBoard, state.playerTurn);
+      if (isWinner(winningCombinations, state.playerTurn)) {
+        updateScore(state.playerTurn);
+        renderScore(state.playerTurn, state.score)
+        showWinnerDialog(state);
+        return;
+      }
+      if (isBoardFull(state)) {
+        updateScore(state.ties);
+        renderScore(" ", state.ties);
+        setTie(state);
+        showWinnerDialog(state);
+      }
+      setPlayerTurn();
+      toggleTurnOnGameBoardTilesContainer(state.playerTurn);
+      renderGameTilesHoverState(state.playerTurn);
+      changeTurnDisplay(state.playerturn);
+    }, 250); 
   }
-  // console.log(state)
 }
 
 function playTile(button) {
@@ -63,11 +85,7 @@ function playTile(button) {
   // console.log(state.playerTurn)
   changeTurnDisplay(state.playerTurn);
   
-  if (state.playerTurn === state.playerTwo.mark && state.playerTwo.name === "cpu") {
-    randomMoveCpu(state.gameBoard, state.playerTurn);
-  }
-
-  // verdergaan met spelverloop nar cpu turm
+  cpuMakesMoves();
 
   console.log(state)
 }
@@ -105,8 +123,12 @@ gameBoardElements[0].addEventListener("click", (e) => {
   }
 })
 
-btnNextRound.addEventListener("click", nextRound);
+btnNextRound.addEventListener("click", () => {
+  nextRound();
+  cpuMakesMoves();
+});
 
 btnQuit.addEventListener("click", quitGame);
 
 // verdergaan met spelverloop nar cpu turm
+// verdergaan met btn-restart + functie

@@ -130,5 +130,4 @@ btnNextRound.addEventListener("click", () => {
 
 btnQuit.addEventListener("click", quitGame);
 
-// verdergaan met spelverloop nar cpu turm
 // verdergaan met btn-restart + functie

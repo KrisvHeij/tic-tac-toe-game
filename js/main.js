@@ -1,6 +1,6 @@
 import { state, setSelectedMark, setPlayerTwoMark, setPlayers, setPlayerTurn, updateGameBoard, updateScore, setTie, setGameBoardForNextRound, createInitialState, resetState } from "./state.js";
 // import { isWinner } from "./gameLogic.js";
-import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, resetGameTiles, renderNextRound } from "./render.js";
+import { showHideGameBoard, showHideStartMenu, renderGameBoard, gameBoardElements, renderGameTilesHoverState, renderGameTile, renderAllGameTiles, toggleTurnOnGameBoardTilesContainer, changeTurnDisplay, renderScore,  showWinnerDialog, resetGameTiles, renderNextRound } from "./render.js";
 import { winningCombinations, isWinner, isBoardFull, randomMoveCpu } from "./gameLogic.js";
 
 const startBtnContainer = document.querySelector(".button-container");
@@ -28,8 +28,9 @@ function startGame(target) {
 
   if (state.playerTurn === state.playerTwo.mark && state.playerTwo.name === "cpu") {
     randomMoveCpu(state.gameBoard, state.playerTurn);
+    renderAllGameTiles(state.gameBoard, state.playerTurn)
   }
-  console.log(state)
+  // console.log(state)
 }
 
 function playTile(button) {

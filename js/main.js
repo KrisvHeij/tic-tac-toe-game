@@ -5,6 +5,7 @@ import { winningCombinations, isWinner, isBoardFull, randomMoveCpu } from "./gam
 
 const startBtnContainer = document.querySelector(".button-container");
 const cpuBtn = document.querySelector(".btn-vs-cpu");
+const btnRestart = document.getElementById("btnRestart");
 const btnNextRound = document.getElementById("btnNextRound");
 const btnQuit = document.getElementById("btnQuit");
 

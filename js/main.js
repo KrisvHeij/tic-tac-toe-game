@@ -49,9 +49,10 @@ function cpuMakesMoves() {
       renderAllGameTiles(state.gameBoard, state.playerTurn);
       if (checkForWinner(state)) return;
       setPlayerTurn();
-      toggleTurnOnGameBoardTilesContainer(state.playerTurn);
+      toggleTurnOnGameBoardTilesContainer();
       renderGameTilesHoverState(state.playerTurn);
-      changeTurnDisplay(state.playerturn);
+      changeTurnDisplay(state.playerTurn);
+      console.log("timeout")
     }, 250); 
   }
 }
@@ -64,7 +65,7 @@ function playTile(button) {
   renderGameTile(state, button, tileSvg);
   if (checkForWinner(state)) return;
   setPlayerTurn();
-  toggleTurnOnGameBoardTilesContainer(state.playerTurn);
+  toggleTurnOnGameBoardTilesContainer();
   renderGameTilesHoverState(state.playerTurn);
   changeTurnDisplay(state.playerTurn);
   cpuMakesMoves();

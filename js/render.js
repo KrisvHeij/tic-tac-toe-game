@@ -31,8 +31,7 @@ export function showHideGameBoard() {
   gameBoard.classList.toggle("hidden");
 }
 
-export function toggleTurnOnGameBoardTilesContainer(turn) {
-  let playerTurn = turn === "x" ? "turn-x" : "turn-o";
+export function toggleTurnOnGameBoardTilesContainer() {
   gameBoardTilesContainer.classList.toggle("turn-x");
   gameBoardTilesContainer.classList.toggle("turn-o");
 }

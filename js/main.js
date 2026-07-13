@@ -97,6 +97,10 @@ function nextRound() {
   renderNextRound(state);
 }
 
+function restartGame() {
+
+}
+
 function quitGame() {
   resetState();
   resetGameTiles();
@@ -129,6 +133,6 @@ btnNextRound.addEventListener("click", () => {
   cpuMakesMoves();
 });
 
-btnQuit.addEventListener("click", quitGame);
+btnRestart.addEventListener("click", restartGame);
 
-// verdergaan met btn-restart + functie
+btnQuit.addEventListener("click", quitGame);

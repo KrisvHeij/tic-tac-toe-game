@@ -9,7 +9,6 @@ const btnNextRound = document.getElementById("btnNextRound");
 const btnQuit = document.getElementById("btnQuit");
 
 function startGame(target) {
-  console.log(state);
   const radioInputs = document.querySelectorAll(".pick-mark-container input[type=radio]");
 
   for (const radio of radioInputs) {
@@ -27,23 +26,27 @@ function startGame(target) {
   cpuMakesMoves();
 }
 
+function checkForWinner(state) {
+  if (isWinner(winningCombinations, state.gameBoard, state.playerTurn)) {
+    updateScore(state.playerTurn);
+    renderScore(state.playerTurn, state.score)
+    showWinnerDialog(state);
+     return;
+  }
+  if (isBoardFull(state)) {
+    updateScore(state.ties);
+    renderScore(" ", state.ties);
+    setTie(state);
+    showWinnerDialog(state);
+  }
+}
+
 function cpuMakesMoves() {
   if (state.playerTurn === state.playerTwo.mark && state.playerTwo.name === "cpu") {
     randomMoveCpu(state.gameBoard, state.playerTurn);
     setTimeout(() => {
       renderAllGameTiles(state.gameBoard, state.playerTurn);
-      if (isWinner(winningCombinations, state.gameBoard, state.playerTurn)) {
-        updateScore(state.playerTurn);
-        renderScore(state.playerTurn, state.score)
-        showWinnerDialog(state);
-        return;
-      }
-      if (isBoardFull(state)) {
-        updateScore(state.ties);
-        renderScore(" ", state.ties);
-        setTie(state);
-        showWinnerDialog(state);
-      }
+      checkForWinner(state);
       setPlayerTurn();
       toggleTurnOnGameBoardTilesContainer(state.playerTurn);
       renderGameTilesHoverState(state.playerTurn);
@@ -58,20 +61,7 @@ function playTile(button) {
 
   updateGameBoard(tilePlayed);
   renderGameTile(state, button, tileSvg);
-  if (isWinner(winningCombinations, state.gameBoard, state.playerTurn)) {
-    updateScore(state.playerTurn);
-    renderScore(state.playerTurn, state.score)
-    showWinnerDialog(state);
-    return;
-  }
-
-  if (isBoardFull(state)) {
-    updateScore(state.ties);
-    renderScore(" ", state.ties);
-    setTie(state);
-    showWinnerDialog(state);
-  }
-  
+  checkForWinner(state);
   setPlayerTurn();
   toggleTurnOnGameBoardTilesContainer(state.playerTurn);
   renderGameTilesHoverState(state.playerTurn);

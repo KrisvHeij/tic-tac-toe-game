@@ -23,11 +23,8 @@ function startGame(target) {
   changeTurnDisplay(state.playerTurn);
   showHideGameBoard();
   showHideStartMenu();
-  
   renderGameBoard(state);
-
   cpuMakesMoves();
-  // console.log(state)
 }
 
 function cpuMakesMoves() {
@@ -58,11 +55,9 @@ function cpuMakesMoves() {
 function playTile(button) {
   const tileSvg = button.querySelector(".tile-played");
   const tilePlayed = button.dataset.tile;
-  // console.log(tilePlayed)
 
   updateGameBoard(tilePlayed);
   renderGameTile(state, button, tileSvg);
-  // console.log("na renderGameTile:", button.classList);
   if (isWinner(winningCombinations, state.playerTurn)) {
     updateScore(state.playerTurn);
     renderScore(state.playerTurn, state.score)
@@ -78,16 +73,10 @@ function playTile(button) {
   }
   
   setPlayerTurn();
-  // console.log("na setPlayerTurn:", state.playerTurn);
   toggleTurnOnGameBoardTilesContainer(state.playerTurn);
-  // console.log("na toggle:", gameBoardTilesContainer.classList);
   renderGameTilesHoverState(state.playerTurn);
-  // console.log(state.playerTurn)
   changeTurnDisplay(state.playerTurn);
-  
   cpuMakesMoves();
-
-  console.log(state)
 }
 
 function nextRound() {
@@ -101,7 +90,6 @@ function quitGame() {
   resetGameTiles();
   showHideGameBoard();
   showHideStartMenu();
-  // console.log(state)
 }
 
 // Event listeners
@@ -110,7 +98,6 @@ startBtnContainer.addEventListener("click", (e) => {
     return;
   } else {
     startGame(e.target);
-    // console.log(state)
   }
 });
 

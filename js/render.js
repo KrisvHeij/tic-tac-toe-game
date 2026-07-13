@@ -10,7 +10,6 @@ const gameTilesHover = document.querySelectorAll(".tile-hover");
 const winnerDialog = document.getElementById("next-round-dialog");
 const winnerText = document.querySelector("#winner-text h3");
 const winnerRound = document.getElementById("winner-icon-text");
-
 const svgs = {
   x: `<svg viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z" fill="#31C3BD" fill-rule="evenodd"/></svg>`,
   xSlate300: `<svg viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z" fill="#a7bec8" fill-rule="evenodd"/></svg>`,
@@ -24,36 +23,22 @@ export const gameBoardElements = [gameBoardTilesContainer];
 
 export function showHideStartMenu() {
   const startMenu = document.getElementById("startMenu");
-
   startMenu.classList.toggle("hidden");
 }
 
 export function showHideGameBoard() {
   const gameBoard = document.getElementById("gameBoard");
-
   gameBoard.classList.toggle("hidden");
 }
 
 export function toggleTurnOnGameBoardTilesContainer(turn) {
   let playerTurn = turn === "x" ? "turn-x" : "turn-o";
-  // console.log(turn)
   gameBoardTilesContainer.classList.toggle("turn-x");
   gameBoardTilesContainer.classList.toggle("turn-o");
-
-  // if (turn === "x") {
-  //   gameBoardTilesContainer.classList.remove(playerTurn);
-  //   gameBoardTilesContainer.classList.add("turn-o");
-  // }
-  // if (turn === "o") {
-  //   gameBoardTilesContainer.classList.remove(playerTurn);
-  //   gameBoardTilesContainer.classList.add("turn-x");
-  // }
 }
 
 export function renderGameTilesHoverState(turn) {
   let playerTurn = turn === "x" ? "turn-x" : "turn-o";
-  // gameBoardTilesContainer.classList.add(playerTurn);
-
   gameTilesHover.forEach((tile) => {
     tile.innerHTML = playerTurn === "turn-x" ? `${svgs.outlineX}` : `${svgs.outlineO}`;
   })
@@ -63,7 +48,6 @@ export function renderGameBoard(state) {
   scoreElementX.textContent = state.score.x;
   scoreElementO.textContent = state.score.o;
   scoreElementTies.textContent = state.ties;
-  // Kan de code hieronder korter/anders?
   scoreTextX.textContent = state.playerOne.mark === "x" ? state.playerOne.name : state.playerTwo.name;
   scoreTextO.textContent = state.playerTwo.mark ==="o" ? state.playerTwo.name : state.playerOne.name;
 
@@ -78,7 +62,6 @@ export function renderGameTile(state, tile, svg) {
 
 export function renderAllGameTiles(gameBoard, playerTurn) {
   gameBoard.forEach((mark, index) => {
-    // const tileSvg = gameTiles.querySelectorAll(".tile-played");
     if (mark !== null) {
       gameTiles[index].classList.add(`tile-${mark}`);
       gameTiles[index].querySelector(".tile-played").innerHTML = `${svgs[mark]}`;
@@ -111,7 +94,6 @@ function renderWinnerText(winner = null, playerOne = null, playerTwo = null) {
 }
 
 function renderNextRoundText(winner, playerOne = null, playerTwo = null) {
-  // renderWinnerText(winner, playerOne, playerTwo);
   if (winner === "x" || winner === "o") {
     winnerRound.classList = winner === playerOne.mark ? `--winner-${winner}` : `--winner-${playerTwo.mark}`;
     winnerRound.innerHTML = winner === playerOne.mark ? `${svgs[playerOne.mark]} takes the round` : `${svgs[playerTwo.mark]} takes the round`;
@@ -119,7 +101,6 @@ function renderNextRoundText(winner, playerOne = null, playerTwo = null) {
     winnerRound.classList = "--tied";
     winnerRound.textContent = "Round Tied";
   }
-  // console.log(winner)
 }
 
 export function showWinnerDialog(state) {
@@ -136,7 +117,6 @@ export function showWinnerDialog(state) {
     renderNextRoundText(winner, "", "");
     winnerDialog.show();
   }
-  // console.log(state);
 }
 
 export function resetGameTiles() {

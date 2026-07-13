@@ -30,14 +30,14 @@ function checkForWinner(state) {
   if (isWinner(winningCombinations, state.gameBoard, state.playerTurn)) {
     updateScore(state.playerTurn);
     renderScore(state.playerTurn, state.score)
-    showWinnerDialog(state);
+    showWinnerDialog(state, "winner");
     return true;
   }
   if (isBoardFull(state)) {
     updateScore(state.ties);
     renderScore(" ", state.ties);
-    setTie(state);
-    showWinnerDialog(state);
+    setTie();
+    showWinnerDialog(state, "tie");
     return true;
   }
 }
@@ -52,7 +52,6 @@ function cpuMakesMoves() {
       toggleTurnOnGameBoardTilesContainer();
       renderGameTilesHoverState(state.playerTurn);
       changeTurnDisplay(state.playerTurn);
-      console.log("timeout")
     }, 250); 
   }
 }

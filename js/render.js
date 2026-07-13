@@ -92,7 +92,7 @@ function renderWinnerText(winner = null, playerOne = null, playerTwo = null) {
   }
 }
 
-function renderNextRoundText(winner, playerOne = null, playerTwo = null) {
+function renderNextRoundText(winner = null, playerOne = null, playerTwo = null) {
   if (winner === "x" || winner === "o") {
     winnerRound.classList = winner === playerOne.mark ? `--winner-${winner}` : `--winner-${playerTwo.mark}`;
     winnerRound.innerHTML = winner === playerOne.mark ? `${svgs[playerOne.mark]} takes the round` : `${svgs[playerTwo.mark]} takes the round`;
@@ -102,18 +102,19 @@ function renderNextRoundText(winner, playerOne = null, playerTwo = null) {
   }
 }
 
-export function showWinnerDialog(state) {
-  console.log(state)
-  const winner = state.playerTurn;
+export function showWinnerDialog(state, result) {
+  // console.log(state)
+  // const winner = state.playerTurn;
 
-  if (winner === "x" || winner === "o") {
-    renderWinnerText(winner, state.playerOne, state.playerTwo);
-    renderNextRoundText(winner, state.playerOne, state.playerTwo);
+  if (result === "winner") {
+    renderWinnerText(state.playerTurn, state.playerOne, state.playerTwo);
+    renderNextRoundText(state.playerTurn, state.playerOne, state.playerTwo);
     winnerDialog.show();
     return;
-  } else {
+  } 
+  if (result === "tie") {
     renderWinnerText("", "", "");
-    renderNextRoundText(winner, "", "");
+    renderNextRoundText("", "", "");
     winnerDialog.show();
   }
 }

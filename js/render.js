@@ -76,7 +76,7 @@ export function changeTurnDisplay(turn) {
 
 export function renderScore(winner = null, score) {
   if (winner === "x" || winner === "o") {
-    const scoreElement = winner === "x" ? document.getElementById(`score${winner.toUpperCase()}`) : document.getElementById(`score${winner.toUpperCase()}`);
+    const scoreElement = document.getElementById(`score${winner.toUpperCase()}`);
   scoreElement.textContent = score[winner];
   } else {
     scoreElementTies.textContent = score;

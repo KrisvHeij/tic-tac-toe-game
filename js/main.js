@@ -31,13 +31,14 @@ function checkForWinner(state) {
     updateScore(state.playerTurn);
     renderScore(state.playerTurn, state.score)
     showWinnerDialog(state);
-     return;
+    return true;
   }
   if (isBoardFull(state)) {
     updateScore(state.ties);
     renderScore(" ", state.ties);
     setTie(state);
     showWinnerDialog(state);
+    return true;
   }
 }
 
@@ -46,7 +47,7 @@ function cpuMakesMoves() {
     randomMoveCpu(state.gameBoard, state.playerTurn);
     setTimeout(() => {
       renderAllGameTiles(state.gameBoard, state.playerTurn);
-      checkForWinner(state);
+      if (checkForWinner(state)) return;
       setPlayerTurn();
       toggleTurnOnGameBoardTilesContainer(state.playerTurn);
       renderGameTilesHoverState(state.playerTurn);
@@ -61,7 +62,7 @@ function playTile(button) {
 
   updateGameBoard(tilePlayed);
   renderGameTile(state, button, tileSvg);
-  checkForWinner(state);
+  if (checkForWinner(state)) return;
   setPlayerTurn();
   toggleTurnOnGameBoardTilesContainer(state.playerTurn);
   renderGameTilesHoverState(state.playerTurn);

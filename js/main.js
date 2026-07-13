@@ -32,7 +32,7 @@ function cpuMakesMoves() {
     randomMoveCpu(state.gameBoard, state.playerTurn);
     setTimeout(() => {
       renderAllGameTiles(state.gameBoard, state.playerTurn);
-      if (isWinner(winningCombinations, state.playerTurn)) {
+      if (isWinner(winningCombinations, state.gameBoard, state.playerTurn)) {
         updateScore(state.playerTurn);
         renderScore(state.playerTurn, state.score)
         showWinnerDialog(state);
@@ -58,7 +58,7 @@ function playTile(button) {
 
   updateGameBoard(tilePlayed);
   renderGameTile(state, button, tileSvg);
-  if (isWinner(winningCombinations, state.playerTurn)) {
+  if (isWinner(winningCombinations, state.gameBoard, state.playerTurn)) {
     updateScore(state.playerTurn);
     renderScore(state.playerTurn, state.score)
     showWinnerDialog(state);

@@ -1,11 +1,9 @@
-import { state } from "./state.js";
-
 export const winningCombinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 
-export function isWinner(arr, playerTurn) {
+export function isWinner(arr, gameBoard, playerTurn) {
   return arr.some((arrVal) => {
     return arrVal.every((innerVal) => {
-      return state.gameBoard[innerVal] === playerTurn;
+      return gameBoard[innerVal] === playerTurn;
     })
   })
 }

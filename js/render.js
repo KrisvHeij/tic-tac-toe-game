@@ -103,9 +103,6 @@ function renderNextRoundText(winner = null, playerOne = null, playerTwo = null) 
 }
 
 export function showWinnerDialog(state, result) {
-  // console.log(state)
-  // const winner = state.playerTurn;
-
   if (result === "winner") {
     renderWinnerText(state.playerTurn, state.playerOne, state.playerTwo);
     renderNextRoundText(state.playerTurn, state.playerOne, state.playerTwo);

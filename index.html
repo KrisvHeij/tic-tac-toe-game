@@ -128,6 +128,11 @@
             >
               <span class="sr-only">Restart game</span>
             </button>
+            <!-- <button
+              class="btn-restart"
+              command="show-modal"
+              commandfor="next-round-dialog"
+            ></button> -->
           </div>
         </header>
         <div class="game-board-tiles turn-x">
@@ -213,6 +218,8 @@
               <button
                 id="btnRestart"
                 class="btn-dialog btn-dialog-restart text-preset-4"
+                command="close"
+                commandfor="restart-dialog"
               >
                 Yes, restart
               </button>

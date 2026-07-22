@@ -36,7 +36,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Github](https://github.com/KrisvHeij/tic-tac-toe-game)
 - Live Site URL: [Github Pages](https://krisvheij.github.io/tic-tac-toe-game/)
 
 ## My process
